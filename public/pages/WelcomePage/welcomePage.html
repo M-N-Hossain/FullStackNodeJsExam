@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FriendBook</title>
+    <link rel="stylesheet" href="./pages/welcomePage/welcomePage.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <a href="http://localhost:8081/welcome"><img src="./assets/images/logo-and-text-transparent-background-resized.png" alt=""></a>
+    </nav>
+    <!-- Main Section -->
+    <div class="mainSection">
+        <div class="info"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore odio, provident molestiae dolorum nostrum ab totam odit laborum. 
+            Blanditiis dolore veniam, architecto sapiente sit quaerat itaque eius placeat sunt harum.</div>
+        <div class="credentialForm">
+            <div class="loginForm">
+                <h2>Log In</h2>
+                <form action="http://localhost:8081/login" method="post">
+                    <input type="text" placeholder="username" name="username" required> <br>
+                    <input type="password" placeholder=" password" name="password" required> <br>
+
+                    <input type="submit" class="loginBtn" value="login"/>
+                </form>
+                <p>Not a a user? <button class="changeToSignupForm">Sign up here</button></p>
+            </div>
+            <div class="signupForm">
+                <h2>Sign Up</h2>
+                <form action="http://localhost:8081/signup" method="post">
+                    <input type="email" placeholder="email" name="email" required> <br>
+                    <input type="text" placeholder=" username" name="username" required> <br>
+                    <input type="password" placeholder=" password" name="password" required> <br>
+                    <input type="submit" class="signupBtn" value="Sign up"/>
+                </form>
+                <p>Already a user? <button class="changeToLoginForm" >Log in here</button></p>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p>Friendbook inc.</p>
+        <p>Created By: Emil Høeg Engelbrechtsen & Md Nayeem Hossain</p>
+        <p>At: KEA - Computer Science, Fullstack Node.js</p>
+    </footer>
+
+    <script src="./pages/welcomePage/welcomePage.js"></script>
+    
+</body>
+</html>

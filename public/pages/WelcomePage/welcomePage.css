@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    position: fixed;
+    background-color: var(--primary500);
+    height: 5rem;
+    width: 100%;
+    z-index: 1;
+}
+nav img {
+    width: 17%;
+    height: 67px;
+    position: relative;
+    left: 10%;
+    top: 5px;
+}
+.mainSection{
+    position: relative;
+    top: 150px;
+    height: 60vh;
+}
+
+.mainSection{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.info{
+    flex: 2;
+    padding: 7%;
+    text-align: center;
+    font-size: 1.5rem;
+
+}
+.credentialForm{
+    flex: 3.5;
+    position: relative;
+}
+.loginForm{
+    visibility: visible;
+    background-color: var(--primary500);
+    position: absolute;
+    top: -1rem;
+    width: 70%;
+    left: 0%;
+    text-align: center;
+    margin: 5%;
+    margin-left: 15%;
+    padding: 3%;
+    height: 18rem;
+}
+.signupForm{
+    visibility: hidden;
+    background-color: var(--primary500);
+    position: absolute;
+    top: -1rem;
+    width: 70%;
+    left: 0%;
+    text-align: center;
+    margin: 5%;
+    margin-left: 15%;
+    padding: 3%;
+    height: 18rem;
+}
+h2{
+    background-color: var(--primary600);
+    position: relative;
+    width: 109%;
+    top: -11.5%;
+    left: -4.5%;
+    padding: 2%;
+    color: white;
+}
+input{
+    margin: 1%;
+    padding: 5px;
+    width: 55%;
+}
+
+button{
+    width: 16%;
+    padding: 1%;
+    font-size: 89%;
+    background: content-box;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    color: white;
+}
+
+
+.credentialForm p{
+    margin: 1%;
+}
+
+footer{
+    position: relative;
+    top: 30vh;
+    width: 100%;
+    background-color:  var(--primary600);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+}
+
+footer p{
+    color: white;
+    margin: 5%;
+}

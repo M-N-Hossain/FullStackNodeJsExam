@@ -1,0 +1,62 @@
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --primary500: #6bab90;
+  --primary600: #55917f;
+  --primary700: #095256;
+  --primary800: #084749;
+  
+  --secondary400: #fedb34;
+  --secondary500: #df8601;
+  --secondary600: #b76e01;
+  
+  --tertitary400: #494e5a;
+  --tertitary500: #2a2d34;
+  --tertitary600: #1b1d22;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--clr-primary-5);
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+
+/* 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--primary500);
+  box-shadow: var(--dark-shadow);
+  z-index: 2;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+} */
+
+/* .nav-center {
+  margin: 0 auto;
+  width: 90vw;
+  max-width: 1170px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+

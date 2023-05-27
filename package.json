@@ -1,0 +1,35 @@
+{
+  "name": "examprojectnodejs",
+  "version": "1.0.0",
+  "description": "Its a exam project. We are going make socail media platform. Where a user can send friend request to other users and share posts with others.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emiliobocadillo/ExamProjectNodeJS.git"
+  },
+  "keywords": [
+    "Social",
+    "Media",
+    "Friends"
+  ],
+  "author": "Emilio and Nayeem",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Emiliobocadillo/ExamProjectNodeJS/issues"
+  },
+  "homepage": "https://github.com/Emiliobocadillo/ExamProjectNodeJS#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.2.4",
+    "nodemailer": "^6.9.1"
+  },
+  "type": "module"
+}
