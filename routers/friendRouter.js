@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 const router = Router();
 
-router.post("/friendRequests", (req, res) => {
+router.post("/sentFriendRequests", (req, res) => {
   const token = req.cookies.token;
   jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
     if (err) {

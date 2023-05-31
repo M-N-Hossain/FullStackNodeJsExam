@@ -6,8 +6,9 @@ const router = Router();
 
 router.get("/users", (req, res) => {
   const token = req.cookies.token;
-  const query = "SELECT user_id, name FROM users WHERE user_id != ?";
-
+  // the sub query excludes the receiver_id from user table
+  const query = "SELECT user_id, name FROM users WHERE user_id != ? AND user_id NOT IN ( SELECT receiver_id, sender_id FROM friend_requests )";
+  // where sender_id = ?
   Jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
     if (err) {
       return res.send({ Error: "Token does not matched" });

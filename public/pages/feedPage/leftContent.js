@@ -43,7 +43,7 @@ fetch("http://localhost:8080/users")
 
 // Fetch the send friend request API
 function sentFriendRequest(user) {
-  fetch("http://localhost:8080/friendRequests", {
+  fetch("http://localhost:8080/sentFriendRequests", {
     method: "POST",
     body: JSON.stringify({
       receiver_id: user.user_id,
@@ -53,8 +53,7 @@ function sentFriendRequest(user) {
     },
   })
     .then((response) => {
-      // window.location.reload("http://localhost:8080/feed");
-      console.log("Works")
+      window.location.reload("http://localhost:8080/feed");
     })
     .catch((error) => {
       console.error("Error fetching submit posts API:", error);

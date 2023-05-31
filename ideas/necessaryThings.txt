@@ -1,4 +1,0 @@
-// Delete friend MySQL query:
-DELETE FROM friends
-WHERE (User ID = 1 AND Friend ID = 2)
-   OR (User ID = 2 AND Friend ID = 1);
