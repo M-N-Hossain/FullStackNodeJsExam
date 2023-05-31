@@ -4,17 +4,17 @@
 }
 nav{
     position: fixed;
-    background-color: var(--primary500);
-    height: 5rem;
+    background-color: var(--primary600);
+    height: 5.5rem;
     width: 100%;
     z-index: 1;
 }
 nav img {
-    width: 17%;
-    height: 67px;
-    position: relative;
-    left: 10%;
-    top: 5px;
+    width: 8%;
+    height: 5rem;
+    position: absolute;
+    left: 17%;
+    top: 2px;
 }
 .mainSection{
     position: relative;
@@ -97,7 +97,7 @@ button{
 
 footer{
     position: relative;
-    top: 30vh;
+    top: 14.8em;
     width: 100%;
     background-color:  var(--primary600);
     display: flex;

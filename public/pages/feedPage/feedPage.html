@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./pages/feedPage/feedPage.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
+
+</head>
+<body>
+    <nav>
+        <a class="logoLink" href="http://localhost:8080"><img class="logo" src="../../assets/images/logo2.png" alt=""></a>
+
+        <input type="search" class="searchBar" placeholder="search post by username">
+
+        <a class="profileLink" href="http://localhost:8080"><img class="profile" src="../../assets/images/logo2.png" alt=""></a>
+        <button class="logOutBtn">Log Out</button>
+    </nav>
+
+    <div class="content">
+        <!-- Left Content -->
+        <div class="leftContent">
+            <h4>Friends Suggestions:</h4>
+            <!-- <div class="addFriendDiv">
+                <a href="http://localhost:8081/welcome"><img class="profile" src="../../assets/images/logo2.png" alt=""></a>
+                <h5>Martin</h5>
+                <button>Send Request</button>
+            </div> -->
+        </div>
+        <!-- Middle Content -->
+        <div class="middleContent">
+            <div class="postBox">
+                <h4>Share thoughts with your friends</h4>
+                <textarea class="wirtePostArea" name="" id="" cols="60" rows="5" placeholder="Wright here ..."></textarea> <br>
+                <button class="postBtn">Post</button>
+            </div>
+            
+        </div>
+        
+        <div class="rightContent">
+            <h4>Friend Requests</h4>
+            <!-- <div class="friendRequestDiv">
+                <a href="http://localhost:8081/welcome"><img class="profile" src="../../assets/images/logo2.png" alt=""></a>
+                <h5>Martin</h5> <br>
+                <button>Accept</button>
+                <button>Reject</button>
+            </div> -->
+        </div>
+    </div>
+    <script src="./pages/feedPage/middleContent.js"></script>
+    <script src="./pages/feedPage/leftContent.js"></script>
+    <script src="./pages/feedPage/rightContent.js"></script>
+    <script src="./pages/feedPage/feedPageGlobal.js"></script>
+
+</body>
+</html>

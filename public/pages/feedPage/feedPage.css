@@ -1,0 +1,277 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    position: fixed;
+    z-index: 1;
+    background-color: var(--primary600);
+    height: 5.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .logoLink{
+    position: relative;
+    width: 8%;
+    left: 12%;
+}
+nav .logoLink .logo{
+    width: 90%;
+    height: 5rem;
+    position: absolute;
+    left: -3%;
+    top: 2px;
+}
+nav .searchBar{
+    left: 8%;
+    position: relative;
+    width: 40%;
+    height: 3rem;
+    top: 1rem;
+    border-radius: 14px;
+    border: none;
+    text-align: center;
+    font-size: 1.1rem;
+}
+nav .profileLink{
+    position: relative;
+    width: 5%;
+    right: -10%;
+    height: 3rem;
+    top: 1rem;
+    
+}
+nav .profileLink .profile{
+    width: 65%;
+    position: absolute;
+    left: 17%;
+    border-radius: 29px;
+    border: 1px solid;
+}
+
+nav .logOutBtn{
+    width: 5%;
+    position: relative;
+    left: -2%;
+    background-color: var(--primary550);
+    color: var(--primary700);
+    border-radius: 5px;
+    border: none;
+    top: 1.5rem;
+    cursor: pointer;
+    height: 2rem;
+    
+}
+
+nav .logOutBtn:hover{
+    background-color: var(--primary700);
+    color: white;
+}
+
+
+.content{
+    position: relative;
+    background-color: var(--primary500);
+    top: 85px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+.content .leftContent{
+    flex: 1;
+    padding: 2%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+}
+.content .middleContent{
+    flex: 2;
+    height: 100vh;
+    background-color: white;
+    margin: 1.2%;
+    border: 1px solid var(--primary550);
+    border-radius: 11px;
+    border-width: thick;
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+}
+
+
+.content .rightContent {
+    flex: 1;
+    padding: 2%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.content .leftContent::-webkit-scrollbar{
+    display: none;
+}
+.content .leftContent .addFriendDiv{
+    width: 102%;
+    height: 4rem;
+    border: 1px solid;
+    margin: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .leftContent .addFriendDiv .profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    border: solid 1px;
+    margin: 10%;
+}
+.content .leftContent .addFriendDiv button{
+    background-color: var(--primary700);
+    color: white;
+    padding: 1%;
+    width: 30%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 1.5rem;
+    font-size: 11px;
+    margin-right: 3%;
+    margin-top: 1%;
+
+}
+
+.content .leftContent .addFriendDiv button:hover{
+    background-color: var(--primary600);
+    color:  var(--primary700);
+}
+
+
+.content .leftContent .addFriendDiv h5{
+    text-align: center;
+    width: 50%;
+    background-color: white;
+    height: 2rem;
+    margin: 5%;
+    margin-left: -5%;
+    padding: 2%;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Middle content styling */
+.content .middleContent::-webkit-scrollbar{
+    display: none;
+}
+.middleContent .postBox{
+    margin: 5%;
+    border: 1.5px solid  var(--primary500);
+    border-radius: 5px;
+}
+.middleContent .postBox h4{
+    position: relative;
+    text-align: center;
+    margin: 1%;
+    color: var(--primary800);
+}
+.middleContent .postBox textarea{
+    margin: 2%;
+    position: relative;
+    font-size: 1rem;
+    border-radius: 5px;
+    left: 6%;
+    padding: 1%;
+}
+.middleContent .postBox .postBtn{
+    background-color: var(--primary550);
+    color: var(--primary700);
+    padding: 1%;
+    width: 12%;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    left: 80.5%;
+    top: -0.5rem;
+    cursor: pointer;
+}
+.middleContent .postBox .postBtn:hover{
+    background-color: var(--primary700);
+    color:  white;
+}
+
+.middleContent .showPost{
+    margin: 5%;
+    border: 1.5px solid  var(--primary500);
+    border-radius: 5px;
+    display: flex;
+    
+}
+
+.middleContent .showPost .postCredentials{
+    margin: 2.5%;
+}
+.middleContent .showPost .postCredentials .postImg{
+    height: 50px;
+    width: 50px;
+    border: 1px solid;
+    border-radius: 30px;
+}
+.middleContent .showPost .post{
+    margin: 1.5%;
+    text-align: center;
+    border: 1.5px solid  var(--primary500);
+    border-radius: 5px;
+    padding: 2%;
+}
+
+/* Right COntent */
+
+.content .rightContent::-webkit-scrollbar{
+    display: none;
+}
+.content .rightContent .friendRequestDiv{
+    width: 112%;
+    height: 6rem;
+    border: 1px solid;
+    margin: 3%;
+    display: -webkit-inline-box;
+    position: relative;
+    left: -10%;
+}
+
+.content .rightContent .friendRequestDiv .profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    border: solid 1px;
+    margin: 5%;
+}
+.content .rightContent .friendRequestDiv button{
+    background-color: var(--primary700);
+    color: white;
+    padding: 1%;
+    width: 20%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 1.5rem;
+    font-size: 11px;
+    margin-right: 3%;
+    margin-top: 1%;
+
+}
+.content .rightContent .friendRequestDiv h5{
+    text-align: center;
+    width: 50%;
+    background-color: white;
+    height: 2rem;
+    margin: 5%;
+    margin-left: 8%;
+    padding: 2%;
+    border-radius: 5px;
+    font-size: 1rem;
+    position: relative;
+    top: 0.5rem;
+}

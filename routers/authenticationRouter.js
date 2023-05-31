@@ -3,18 +3,17 @@ import Jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import dbConnection from "../database/connection.js";
 
-
 const router = Router();
 
 // Sign up route
 router.post("/signup", (req, res) => {
-  const query = "INSERT INTO users (`email`,`username`,`password`) VALUES (?)";
+  const query = "INSERT INTO users (`email`,`username`,`password`, `name`) VALUES (?)";
   // Hashing password
   bcrypt.hash(req.body.password, 12, (err, hashedPassword) => {
     if (err) {
       return res.status(404).send({ Error: "Error in hashing password" });
     } else {
-      const values = [req.body.email, req.body.username, hashedPassword];
+      const values = [req.body.email, req.body.username, hashedPassword , req.body.username];
       dbConnection.query(query, [values], (err, data) => {
         if (err) {
           return res
@@ -46,9 +45,10 @@ router.post("/login", (req, res) => {
           const jwtoken = Jwt.sign(data[0], process.env.SECRET_KEY, {
             expiresIn: "1d",
           });
+          console.log(data[0]);
           // sending token as cookie
           res.cookie("token", jwtoken);
-          res.send({ Status: "user logged in", token: jwtoken });
+          res.send({ Status: "user logged in" });
         } else {
           res.send({ Error: "password does not matched" });
         }
