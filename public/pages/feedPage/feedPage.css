@@ -112,18 +112,20 @@ nav .logOutBtn:hover{
     display: none;
 }
 .content .leftContent .addFriendDiv{
+    background-color: var(--primary600);
     width: 102%;
-    height: 4rem;
+    height: 3rem;
     border: 1px solid;
     margin: 3%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 50px
 }
 
 .content .leftContent .addFriendDiv .profile{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 35px;
     border-radius: 30px;
     border: solid 1px;
     margin: 10%;
@@ -144,15 +146,15 @@ nav .logOutBtn:hover{
 }
 
 .content .leftContent .addFriendDiv button:hover{
-    background-color: var(--primary600);
-    color:  var(--primary700);
+    background-color: var(--primary550);
+    color:  var(--primary800);
 }
 
 
 .content .leftContent .addFriendDiv h5{
     text-align: center;
     width: 50%;
-    background-color: white;
+    background-color: var(--primary500);
     height: 2rem;
     margin: 5%;
     margin-left: -5%;
@@ -232,19 +234,22 @@ nav .logOutBtn:hover{
     display: none;
 }
 .content .rightContent .friendRequestDiv{
-    width: 112%;
-    height: 6rem;
+    background-color: var(--primary600);
+    width: 103%;
+    height: 3rem;
     border: 1px solid;
     margin: 3%;
-    display: -webkit-inline-box;
     position: relative;
     left: -10%;
+    align-items: center;
+    display: flex;
+    border-radius: 50px;
 }
 
 .content .rightContent .friendRequestDiv .profile{
-    width: 50px;
-    height: 50px;
-    border-radius: 30px;
+    width: 45px;
+    height: 33px;
+    border-radius: 16px;
     border: solid 1px;
     margin: 5%;
 }
@@ -262,16 +267,19 @@ nav .logOutBtn:hover{
     margin-top: 1%;
 
 }
+.content .rightContent .friendRequestDiv button:hover{
+     background-color: var(--primary550);
+    color:  var(--primary800);
+}
 .content .rightContent .friendRequestDiv h5{
     text-align: center;
-    width: 50%;
-    background-color: white;
+    width: 70%;
+    background-color: var(--primary500);
     height: 2rem;
     margin: 5%;
-    margin-left: 8%;
+    margin-left: -1%;
     padding: 2%;
     border-radius: 5px;
     font-size: 1rem;
     position: relative;
-    top: 0.5rem;
 }
