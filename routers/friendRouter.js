@@ -8,7 +8,7 @@ router.post("/sentFriendRequests", (req, res) => {
   const token = req.cookies.token;
   jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
     if (err) {
-      return res.send({Error: "Token does not matched"});
+      return res.send({ Error: "Token does not matched" });
     }
     try {
       const senderId = decoded.user_id;
@@ -34,7 +34,7 @@ router.post("/sentFriendRequests", (req, res) => {
           dbConnection.query(
             "INSERT INTO friend_requests (sender_id, receiver_id) VALUES (?, ?)",
             [senderId, receiverId],
-            (err) => {
+            (err, result) => {
               if (err) {
                 console.error(err);
                 return res.status(500).json({ message: "An error occurred" });
@@ -47,6 +47,37 @@ router.post("/sentFriendRequests", (req, res) => {
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "An error occurred" });
+    }
+  });
+});
+
+router.get("/recieveFriendRequests", (req, res) => {
+  const token = req.cookies.token;
+  const query = `
+  SELECT u.user_id, u.name
+FROM users u
+JOIN friend_requests fr ON fr.sender_id = u.user_id
+WHERE fr.receiver_id = ?;
+`;
+
+  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.send({ Error: "Token does not matched" });
+    } else {
+      dbConnection.query(
+        query,
+        [decoded.user_id],
+        (err, result) => {
+          if (err) {
+            res.send({
+              Error:
+                "An error occured while executing recieveFriendRequests query",
+            });
+          } else {
+            res.send({ users: result });
+          }
+        }
+      );
     }
   });
 });

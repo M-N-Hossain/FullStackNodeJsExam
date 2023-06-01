@@ -28,7 +28,7 @@ function createFriendRequestElement(user) {
 }
 
 // Fetch the users from the users API
-fetch("http://localhost:8080/users")
+fetch("http://localhost:8080/recieveFriendRequests")
   .then((response) => response.json())
   .then((data) => {
     const users = data.users;
