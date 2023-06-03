@@ -4,80 +4,94 @@ import jwt from "jsonwebtoken";
 
 const router = Router();
 
-router.post("/sentFriendRequests", (req, res) => {
+router.post("/friends", (req, res) => {
   const token = req.cookies.token;
-  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
-    if (err) {
-      return res.send({ Error: "Token does not matched" });
-    }
-    try {
-      const senderId = decoded.user_id;
-      const receiverId = req.body.receiver_id;
+  const queryForAddFriend =
+    "INSERT INTO friends_list  (`user_id`, `friend_id`) VALUES (?,?)";
 
-      // Check if a friend request already exists between the sender and receiver
-      dbConnection.query(
-        "SELECT * FROM friend_requests WHERE sender_id = ? AND receiver_id = ?",
-        [senderId, receiverId],
-        (err, existingRows) => {
-          if (err) {
-            console.error(err);
-            return res.status(500).json({ message: "An error occurred" });
-          }
-
-          if (existingRows.length > 0) {
-            return res
-              .status(400)
-              .json({ message: "Friend request already sent" });
-          }
-
-          // Insert the friend request into the friend_requests table
-          dbConnection.query(
-            "INSERT INTO friend_requests (sender_id, receiver_id) VALUES (?, ?)",
-            [senderId, receiverId],
-            (err, result) => {
-              if (err) {
-                console.error(err);
-                return res.status(500).json({ message: "An error occurred" });
-              }
-              res.json({ message: "Friend request sent" });
-            }
-          );
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "An error occurred" });
-    }
-  });
-});
-
-router.get("/recieveFriendRequests", (req, res) => {
-  const token = req.cookies.token;
-  const query = `
-  SELECT u.user_id, u.name
-FROM users u
-JOIN friend_requests fr ON fr.sender_id = u.user_id
-WHERE fr.receiver_id = ?;
-`;
+  const queryForDeleteFriendRequest =
+    "DELETE FROM friend_requests where sender_id = ? and receiver_id = ?;";
 
   jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
     if (err) {
       return res.send({ Error: "Token does not matched" });
     } else {
+      const valuesForFirstExecution = [decoded.user_id, req.body.sender_id];
       dbConnection.query(
-        query,
-        [decoded.user_id],
+        queryForAddFriend,
+        valuesForFirstExecution,
         (err, result) => {
           if (err) {
-            res.send({
-              Error:
-                "An error occured while executing recieveFriendRequests query",
+            return res.send({
+              Error: "Error in first add friend query execution",
             });
           } else {
-            res.send({ users: result });
+            const valuesForSecondExecution = [
+              req.body.sender_id,
+              decoded.user_id,
+            ];
+            dbConnection.query(
+              queryForAddFriend,
+              valuesForSecondExecution,
+              (err, result) => {
+                if (err) {
+                  return res.send({
+                    Error: "Error in second add friend query execution",
+                  });
+                } else {
+                  const valuesForDeleteFriendRequest = [
+                    req.body.sender_id,
+                    decoded.user_id,
+                  ];
+                  dbConnection.query(
+                    queryForDeleteFriendRequest,
+                    valuesForDeleteFriendRequest,
+                    (err, result) => {
+                      if (err) {
+                        return res.send({
+                          Error:
+                            "Error in delete friend request query execution",
+                        });
+                      } else {
+                        return res.send({
+                          Status: "Succesfully add to friend list",
+                        });
+                      }
+                    }
+                  );
+                }
+              }
+            );
           }
         }
       );
+    }
+  });
+});
+
+router.get("/friends", (req, res) => {
+  const query = `
+  SELECT u.user_id, u.name
+FROM friends_list f
+JOIN users u ON f.friend_id = u.user_id
+WHERE f.user_id = ?;
+`;
+  const token = req.cookies.token;
+
+  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.send({ Error: "Token does not matched" });
+    } else {
+      const user_id = decoded.user_id;
+      dbConnection.query(query, user_id, (req, result) => {
+        if (err) {
+          return res.send({
+            Error: "Error in get friends query execution",
+          });
+        } else {
+          res.send({ friends: result });
+        }
+      });
     }
   });
 });

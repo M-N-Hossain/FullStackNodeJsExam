@@ -76,7 +76,7 @@ nav .logOutBtn:hover{
     position: relative;
     background-color: var(--primary500);
     top: 85px;
-    height: 100vh;
+    height: 89vh;
     display: flex;
     justify-content: space-between;
 }
@@ -89,7 +89,7 @@ nav .logOutBtn:hover{
 }
 .content .middleContent{
     flex: 2;
-    height: 100vh;
+    height: 87vh;
     background-color: white;
     margin: 1.2%;
     border: 1px solid var(--primary550);
@@ -104,6 +104,8 @@ nav .logOutBtn:hover{
 .content .rightContent {
     flex: 1;
     padding: 2%;
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -220,6 +222,9 @@ nav .logOutBtn:hover{
     border: 1px solid;
     border-radius: 30px;
 }
+.middleContent .showPost .postCredentials .postName{
+    text-align: center;
+}
 .middleContent .showPost .post{
     margin: 1.5%;
     text-align: center;
@@ -233,7 +238,24 @@ nav .logOutBtn:hover{
 .content .rightContent::-webkit-scrollbar{
     display: none;
 }
+
 .content .rightContent .friendRequestDiv{
+   flex: 1;
+
+}
+.content .rightContent .friendRequestDiv::-webkit-scrollbar{
+    display: none;
+}
+.content .rightContent .contactDiv{
+    flex: 1;
+
+}
+.content .rightContent .contactDiv::-webkit-scrollbar{
+    display: none;
+}
+
+
+.content .rightContent .friendRequestDiv .friendRequest{
     background-color: var(--primary600);
     width: 103%;
     height: 3rem;
@@ -246,14 +268,27 @@ nav .logOutBtn:hover{
     border-radius: 50px;
 }
 
-.content .rightContent .friendRequestDiv .profile{
+.content .rightContent .friendRequestDiv .friendRequest .profile{
     width: 45px;
     height: 33px;
     border-radius: 16px;
     border: solid 1px;
     margin: 5%;
 }
-.content .rightContent .friendRequestDiv button{
+.content .rightContent .friendRequestDiv .friendRequest h5{
+    text-align: center;
+    width: 70%;
+    background-color: var(--primary500);
+    height: 2rem;
+    margin: 5%;
+    margin-left: -1%;
+    padding: 2%;
+    border-radius: 5px;
+    font-size: 1rem;
+    position: relative;
+}
+
+.content .rightContent .friendRequestDiv .friendRequest button{
     background-color: var(--primary700);
     color: white;
     padding: 1%;
@@ -267,11 +302,36 @@ nav .logOutBtn:hover{
     margin-top: 1%;
 
 }
-.content .rightContent .friendRequestDiv button:hover{
+.content .rightContent .friendRequestDiv .friendRequest button:hover{
      background-color: var(--primary550);
     color:  var(--primary800);
 }
-.content .rightContent .friendRequestDiv h5{
+
+
+
+
+.content .rightContent .contactDiv .friendDiv{
+    background-color: var(--primary600);
+    width: 103%;
+    height: 3rem;
+    border: 1px solid;
+    margin: 3%;
+    position: relative;
+    left: -10%;
+    align-items: center;
+    display: flex;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.content .rightContent .contactDiv .friendDiv .profile{
+    width: 45px;
+    height: 33px;
+    border-radius: 16px;
+    border: solid 1px;
+    margin: 5%;
+}
+.content .rightContent .contactDiv .friendDiv h5{
     text-align: center;
     width: 70%;
     background-color: var(--primary500);

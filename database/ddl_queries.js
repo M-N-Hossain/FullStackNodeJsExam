@@ -30,14 +30,11 @@ CREATE TABLE IF NOT EXISTS posts (
 );
 `);
 
-
-
 dbConnection.execute(`
 CREATE TABLE IF NOT EXISTS friend_requests (
     request_id int primary key auto_increment,
     sender_id int,
     receiver_id int,
-    status enum('pending', 'accepted', 'rejected') default 'pending',
     FOREIGN KEY (sender_id) REFERENCES users (user_id),
     FOREIGN KEY (receiver_id) REFERENCES users (user_id)
 );

@@ -40,7 +40,8 @@ function createPostElement(post) {
   profileImg.alt = "";
 
   const username = document.createElement("h5");
-  username.textContent = post.username;
+  username.classList.add("postName");
+  username.textContent = post.name;
 
   postCredentialsDiv.appendChild(profileImg);
   postCredentialsDiv.appendChild(username);

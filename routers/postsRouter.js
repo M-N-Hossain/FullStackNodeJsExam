@@ -27,7 +27,7 @@ router.post("/posts", (req, res) => {
 });
 
 router.get("/posts", (req, res) => {
-    const query = "SELECT * FROM posts";
+    const query = "SELECT name, post_text FROM users u, posts p where p.user_id = u.user_id";
     
     dbConnection.query(query, (err, posts) => {
       if (err) {

@@ -7,6 +7,7 @@ import userAuthenticationRouter from "./routers/authenticationRouter.js";
 import userAuthorizationRouter from "./routers/authorizationRoutes.js";
 import postsRoter from "./routers/postsRouter.js";
 import usersRouter from "./routers/usersRouter.js";
+import friendRequestRouter from "./routers/friendRequestRouter.js";
 import friendRouter from "./routers/friendRouter.js";
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(userAuthenticationRouter);
 app.use(userAuthorizationRouter);
 app.use(postsRoter);
 app.use(usersRouter);
+app.use(friendRequestRouter);
 app.use(friendRouter);
 
 function readPage(pagePath) {
