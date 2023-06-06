@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 const router = Router();
 
-router.post("/sentFriendRequests", (req, res) => {
+router.post("/friendRequests", (req, res) => {
   const token = req.cookies.token;
   jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
     if (err) {
@@ -21,13 +21,13 @@ router.post("/sentFriendRequests", (req, res) => {
         (err, existingRows) => {
           if (err) {
             console.error(err);
-            return res.status(500).json({ message: "An error occurred" });
+            return res.status(500).send({ message: "An error occurred" });
           }
 
           if (existingRows.length > 0) {
             return res
               .status(400)
-              .json({ message: "Friend request already sent" });
+              .send({ message: "Friend request already sent" });
           }
 
           // Insert the friend request into the friend_requests table
@@ -37,21 +37,21 @@ router.post("/sentFriendRequests", (req, res) => {
             (err, result) => {
               if (err) {
                 console.error(err);
-                return res.status(500).json({ message: "An error occurred" });
+                return res.status(500).send({ message: "An error occurred" });
               }
-              res.json({ message: "Friend request sent" });
+              res.send({ message: "Friend request sent" });
             }
           );
         }
       );
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "An error occurred" });
+      res.status(500).send({ message: "An error occurred" });
     }
   });
 });
 
-router.get("/recieveFriendRequests", (req, res) => {
+router.get("/friendRequests", (req, res) => {
   const token = req.cookies.token;
   const query = `
   SELECT u.user_id, u.name
@@ -64,20 +64,41 @@ WHERE fr.receiver_id = ?;
     if (err) {
       return res.send({ Error: "Token does not matched" });
     } else {
-      dbConnection.query(
-        query,
-        [decoded.user_id],
-        (err, result) => {
-          if (err) {
-            res.send({
-              Error:
-                "An error occured while executing recieveFriendRequests query",
-            });
-          } else {
-            res.send({ users: result });
-          }
+      dbConnection.query(query, [decoded.user_id], (err, result) => {
+        if (err) {
+          res.send({
+            Error:
+              "An error occured while executing recieveFriendRequests query",
+          });
+        } else {
+          res.send({ users: result });
         }
-      );
+      });
+    }
+  });
+});
+
+router.delete("/friendRequests/:id", (req, res) => {
+  const token = req.cookies.token;
+  const query = `DELETE FROM friend_requests WHERE (receiver_id = ? AND sender_id = ?)`;
+
+  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.send({ Error: "Token does not matched" });
+    } else {
+      const receiver_id = decoded.user_id;
+      const sender_id = req.params.id;
+      dbConnection.query(query, [receiver_id, sender_id], (err, result) => {
+        if (err) {
+          res.send({
+            Error:
+              "An error occured while executing reject friend requests query",
+            err,
+          });
+        } else {
+          res.send({ message: "Friend request rejected" });
+        }
+      });
     }
   });
 });

@@ -36,6 +36,25 @@ nav .searchBar{
     text-align: center;
     font-size: 1.1rem;
 }
+
+nav .searchBtn{
+    position: absolute;
+    width: 2%;
+    height: 2rem;
+    right: 31%;
+    top: 1.5rem;
+    border-radius: 8px;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+nav .searchBtn i{
+    color: var(--primary600)
+}
+nav .searchBtn i:hover{
+    color: var(--primary800)
+}
 nav .profileLink{
     position: relative;
     width: 5%;
@@ -50,6 +69,12 @@ nav .profileLink .profile{
     left: 17%;
     border-radius: 29px;
     border: 1px solid;
+    top: -0.5rem;
+}
+nav .profileName{
+    position: absolute;
+    left: 87%;
+    top: 4rem;
 }
 
 nav .logOutBtn{
@@ -110,9 +135,20 @@ nav .logOutBtn:hover{
     overflow-y: auto;
 }
 
+/* Left Content styling */
+
 .content .leftContent::-webkit-scrollbar{
     display: none;
 }
+.content .leftContent h4{
+    background-color: var(--primary700);
+  color: white;
+  text-align: center;
+  padding: 1%;
+  border-radius: 13px;
+  margin-bottom: 5%;
+}
+
 .content .leftContent .addFriendDiv{
     background-color: var(--primary600);
     width: 102%;
@@ -181,12 +217,16 @@ nav .logOutBtn:hover{
     color: var(--primary800);
 }
 .middleContent .postBox textarea{
+   
     margin: 2%;
+    width: 84%;
     position: relative;
     font-size: 1rem;
     border-radius: 5px;
     left: 6%;
     padding: 1%;
+    height: 7rem;
+
 }
 .middleContent .postBox .postBtn{
     background-color: var(--primary550);
@@ -204,6 +244,8 @@ nav .logOutBtn:hover{
     background-color: var(--primary700);
     color:  white;
 }
+
+/* Show Post styling */
 
 .middleContent .showPost{
     margin: 5%;
@@ -233,7 +275,7 @@ nav .logOutBtn:hover{
     padding: 2%;
 }
 
-/* Right COntent */
+/* Right Content styling */
 
 .content .rightContent::-webkit-scrollbar{
     display: none;
@@ -254,6 +296,18 @@ nav .logOutBtn:hover{
     display: none;
 }
 
+/* Friend requests styling */
+.content .rightContent .friendRequestDiv h4{
+    background-color: var(--primary700);
+  color: white;
+  text-align: center;
+  padding: 1%;
+  border-radius: 13px;
+  margin-bottom: 5%;
+  left: -6%;
+  position: relative;
+
+}
 
 .content .rightContent .friendRequestDiv .friendRequest{
     background-color: var(--primary600);
@@ -262,7 +316,7 @@ nav .logOutBtn:hover{
     border: 1px solid;
     margin: 3%;
     position: relative;
-    left: -10%;
+    left: -5%;
     align-items: center;
     display: flex;
     border-radius: 50px;
@@ -308,7 +362,18 @@ nav .logOutBtn:hover{
 }
 
 
+/* Contacts styling */
 
+.content .rightContent .contactDiv h4{
+    background-color: var(--primary700);
+  color: white;
+  text-align: center;
+  padding: 1%;
+  border-radius: 13px;
+  margin-bottom: 5%;
+  position: relative;
+  left: -6%;
+}
 
 .content .rightContent .contactDiv .friendDiv{
     background-color: var(--primary600);
@@ -317,7 +382,7 @@ nav .logOutBtn:hover{
     border: 1px solid;
     margin: 3%;
     position: relative;
-    left: -10%;
+    left: -5%;
     align-items: center;
     display: flex;
     border-radius: 50px;
@@ -342,4 +407,127 @@ nav .logOutBtn:hover{
     border-radius: 5px;
     font-size: 1rem;
     position: relative;
+}
+
+.content .rightContent .contactDiv .friendDiv button{
+    background-color: var(--primary700);
+    color: white;
+    padding: 1%;
+    width: 25%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 2rem;
+    font-size: 11px;
+    margin-right: 3%;
+    margin-top: 1%;
+
+}
+.content .rightContent .contactDiv .friendDiv button:hover{
+    background-color: var(--primary550);
+    color:  var(--primary800);
+}
+
+/* Message styling */
+
+.messagediv{
+    visibility: hidden;
+    position: absolute;
+    height: 60vh;
+    width: 50%;
+    top: 5rem;
+    left: 25%;
+
+}
+.messagediv .messageContainer{
+   
+    position: relative;
+    background-color: var(--primary700);
+    height: 45vh;
+    width: 95%;
+    left: 2%;
+    border-radius: 5px;
+
+}
+.messagediv .messageContainer .username{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary800);
+
+}
+
+.messagediv .messageContainer .username h2{
+    flex:4;
+    position: relative;
+    text-align: center;
+    padding: 1%;
+    color: white;
+
+}
+.messagediv .messageContainer .username button{
+    background-color: var(--primary700);
+    color: white;
+    position: relative;
+    right: 4%;
+    width: 8%;
+    height: 2rem;
+    top: 0.4rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.messagediv .messageContainer .outgoingMessage{
+    background-color: var(--primary600);
+    width: 40%;
+    position: sticky;
+    left: 55%;
+    margin: 1%;
+    height: auto;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1%;
+    border-radius: 5px;
+}
+.messagediv .messageContainer .incomingMessage{
+    background-color: var(--primary600);
+    width: 40%;
+    position: sticky;
+    left: 25%;
+    margin: 1%;
+    height: auto;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.messagediv .sendForm{
+    position: relative;
+    background-color: var(--primary800);
+    height: 15vh;
+    width: 95%;
+    left: 2%;
+    align-items: center;
+    display: flex;
+}
+
+.messagediv .sendForm .messageInput{
+    position: relative;
+    height: 3rem;
+    width: 65%;
+    left: 10%;
+    border-radius: 10px;
+    font-size: 2rem;
+    padding: 2%;
+}
+.messagediv .sendForm .sendBtn{
+    background-color: var(--primary700);
+    color: white;
+    position: relative;
+    left: 15%;
+    height: 2rem;
+    width: 10%;
+    border-radius: 5px;
+    cursor: pointer;
 }

@@ -1,13 +1,5 @@
 const logOutBtn = document.querySelector(".logOutBtn");
 
-// function logOut(event) {
-//   event.preventDefault();
-
-//   fetch("http://localhost:8080/logout", {
-//     method: "POST",
-//   });
-// }
-
 logOutBtn.addEventListener("click", () => {
   fetch("http://localhost:8080/logout")
     .then((response) => response.json())
@@ -22,3 +14,11 @@ logOutBtn.addEventListener("click", () => {
       console.error("Error fetching log out API:", error);
     });
 });
+
+const profileName = document.querySelector(".profileName");
+fetch("http://localhost:8080/usersProfileName")
+  .then((response) => response.json())
+  .then((result) => {
+    profileName.textContent = result.data[0].name;
+  })
+  .catch((err) => console.log(err));

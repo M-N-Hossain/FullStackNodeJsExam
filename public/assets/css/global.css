@@ -37,27 +37,4 @@ main {
   flex: 1;
 }
 
-/* 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--primary500);
-  box-shadow: var(--dark-shadow);
-  z-index: 2;
-  height: 5rem;
-  display: flex;
-  align-items: center;
-} */
-
-/* .nav-center {
-  margin: 0 auto;
-  width: 90vw;
-  max-width: 1170px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
-
 

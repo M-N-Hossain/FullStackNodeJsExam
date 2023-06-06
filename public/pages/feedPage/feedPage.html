@@ -7,15 +7,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="./pages/feedPage/feedPage.css">
     <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="/socket.io/socket.io.js"></script>
+
 
 </head>
 <body>
     <nav>
         <a class="logoLink" href="http://localhost:8080"><img class="logo" src="../../assets/images/logo2.png" alt=""></a>
 
-        <input type="search" class="searchBar" placeholder="search post by username">
+        <input type="text" class="searchBar" placeholder="search post by username">
+        <button class="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
 
         <a class="profileLink" href="http://localhost:8080"><img class="profile" src="../../assets/images/logo2.png" alt=""></a>
+        <h4 class="profileName">username</h4>
         <button class="logOutBtn">Log Out</button>
     </nav>
 
@@ -23,17 +29,12 @@
         <!-- Left Content -->
         <div class="leftContent">
             <h4>Friends Suggestions:</h4>
-            <!-- <div class="addFriendDiv">
-                <a href="http://localhost:8081/welcome"><img class="profile" src="../../assets/images/logo2.png" alt=""></a>
-                <h5>Martin</h5>
-                <button>Send Request</button>
-            </div> -->
         </div>
         <!-- Middle Content -->
         <div class="middleContent">
             <div class="postBox">
                 <h4>Share thoughts with your friends</h4>
-                <textarea class="wirtePostArea" name="" id="" cols="60" rows="5" placeholder="Wright here ..."></textarea> <br>
+                <textarea class="wirtePostArea" name="" id=""  placeholder="Wright here ..."></textarea> <br>
                 <button class="postBtn">Post</button>
             </div>
             
@@ -42,23 +43,32 @@
         <div class="rightContent">
             <div class="friendRequestDiv">
                 <h4>Friend Requests</h4>
-                <!-- <div class="friendRequestDiv">
-                    <a href="http://localhost:8081/welcome"><img class="profile" src="../../assets/images/logo2.png" alt=""></a>
-                    <h5>Martin</h5> <br>
-                    <button>Accept</button>
-                    <button>Reject</button>
-                </div> -->
             </div>
             <div class="contactDiv">
                 <h4>Contacts</h4>
             </div>
             
         </div>
+        <div class="messagediv">
+            <div class="messageContainer">
+                <div class="username">
+                    <h2 class="messageReceiverName"></h2>
+                    <p class="messageReceiverId" style="visibility: visible;"></p>
+                    <button class="messageCloseBtn">Close</button>
+                </div>
+            </div>
+            <form action="" class="sendForm">
+                <input type="text" placeholder="Wirte a message..." class="messageInput">
+                <button type="submit" class="sendBtn">Send</button>
+            </form>
+        </div>
     </div>
+
     <script src="./pages/feedPage/middleContent.js"></script>
     <script src="./pages/feedPage/leftContent.js"></script>
     <script src="./pages/feedPage/rightContent.js"></script>
     <script src="./pages/feedPage/feedPageGlobal.js"></script>
+    <!-- <script src="./pages/feedPage/message.js"></script> -->
 
 </body>
 </html>

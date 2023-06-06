@@ -4,11 +4,39 @@ import jwt from "jsonwebtoken";
 
 const router = Router();
 
+router.get("/friends", (req, res) => {
+  const query = `
+  SELECT u.user_id, u.name
+FROM friends_list f
+JOIN users u ON f.friend_id = u.user_id
+WHERE f.user_id = ?;
+`;
+  const token = req.cookies.token;
+
+  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.send({ Error: "Token does not matched" });
+    } else {
+      const user_id = decoded.user_id;
+      dbConnection.query(query, user_id, (req, result) => {
+        if (err) {
+          return res.send({
+            Error: "Error in get friends query execution",
+          });
+        } else {
+          res.send({ friends: result });
+        }
+      });
+    }
+  });
+});
+
 router.post("/friends", (req, res) => {
   const token = req.cookies.token;
   const queryForAddFriend =
     "INSERT INTO friends_list  (`user_id`, `friend_id`) VALUES (?,?)";
 
+  // Delete from friend request list as the sender is added to the friend_list
   const queryForDeleteFriendRequest =
     "DELETE FROM friend_requests where sender_id = ? and receiver_id = ?;";
 
@@ -65,33 +93,6 @@ router.post("/friends", (req, res) => {
           }
         }
       );
-    }
-  });
-});
-
-router.get("/friends", (req, res) => {
-  const query = `
-  SELECT u.user_id, u.name
-FROM friends_list f
-JOIN users u ON f.friend_id = u.user_id
-WHERE f.user_id = ?;
-`;
-  const token = req.cookies.token;
-
-  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
-    if (err) {
-      return res.send({ Error: "Token does not matched" });
-    } else {
-      const user_id = decoded.user_id;
-      dbConnection.query(query, user_id, (req, result) => {
-        if (err) {
-          return res.send({
-            Error: "Error in get friends query execution",
-          });
-        } else {
-          res.send({ friends: result });
-        }
-      });
     }
   });
 });

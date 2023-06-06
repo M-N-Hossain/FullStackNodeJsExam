@@ -37,7 +37,6 @@ router.post("/login", (req, res) => {
         .status(404)
         .send({ Error: "An error occured in sql execution" });
     } else if (data.length > 0) {
-      // console.log(data);
       bcrypt.compare(req.body.password, data[0].password, (err, response) => {
         if (err) return res.send({ Error: "hashed password compare error" });
         else if (response) {

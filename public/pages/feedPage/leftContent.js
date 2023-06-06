@@ -1,7 +1,6 @@
 const leftContent = document.querySelector(".leftContent");
 
 // Function to create and append a user element
-
 function createUserElement(user) {
   const userDiv = document.createElement("div");
   userDiv.className = "addFriendDiv";
@@ -41,9 +40,9 @@ fetch("http://localhost:8080/users")
     console.error("Error fetching users:", error);
   });
 
-// Fetch the send friend request API
+// Fetch the friend request API to send friend request
 function sentFriendRequest(user) {
-  fetch("http://localhost:8080/sentFriendRequests", {
+  fetch("http://localhost:8080/friendRequests", {
     method: "POST",
     body: JSON.stringify({
       receiver_id: user.user_id,

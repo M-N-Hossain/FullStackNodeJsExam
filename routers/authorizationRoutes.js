@@ -21,7 +21,6 @@ function verifyUser(req, res, next) {
 function readPage(pagePath) {
   return fs.readFileSync(pagePath).toString();
 }
-
 // Pages
 const feedPage = readPage("public/pages/feedPage/feedPage.html");
 

@@ -27,16 +27,36 @@ router.post("/posts", (req, res) => {
 });
 
 router.get("/posts", (req, res) => {
-    const query = "SELECT name, post_text FROM users u, posts p where p.user_id = u.user_id";
-    
-    dbConnection.query(query, (err, posts) => {
-      if (err) {
-        console.error("Error executing SQL query:", err);
-        return res.status(500).json({ error: "Error retrieving posts" });
-      }
-  
-      res.json(posts);
-    });
+  const query = `
+  SELECT name, post_text FROM posts p JOIN users u ON p.user_id = u.user_id ORDER BY p.post_id;
+`;
+
+  dbConnection.query(query, (err, posts) => {
+    if (err) {
+      console.error("Error executing SQL query:", err);
+      return res.status(500).json({ error: "Error retrieving posts" });
+    }
+
+    res.json(posts);
   });
+});
+
+router.get("/posts/:username", (req, res) => {
+  const query = `
+  SELECT name, post_text
+FROM  users u
+JOIN posts p ON p.user_id = u.user_id
+WHERE u.username = ?;
+`;
+  const username = req.params.username;
+  dbConnection.query(query, username, (err, posts) => {
+    if (err) {
+      console.error("Error executing SQL query:", err);
+      return res.status(500).json({ error: "Error retrieving posts" });
+    }
+
+    res.json(posts);
+  });
+});
 
 export default router;
