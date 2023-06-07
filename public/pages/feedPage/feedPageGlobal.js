@@ -16,9 +16,12 @@ logOutBtn.addEventListener("click", () => {
 });
 
 const profileName = document.querySelector(".profileName");
+const profileId = document.querySelector(".profileId");
 fetch("http://localhost:8080/usersProfileName")
   .then((response) => response.json())
   .then((result) => {
-    profileName.textContent = result.data[0].name;
+    profileName.value = result.data[0].name;
+    profileId.value = result.data[0].user_id;
+   
   })
   .catch((err) => console.log(err));

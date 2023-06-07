@@ -114,37 +114,33 @@ function createFriendElement(friend) {
   const messageBtn = document.createElement("button");
   messageBtn.textContent = "Send Message";
   messageBtn.addEventListener("click", () => {
+    const divElements = messageContainer.getElementsByTagName("div");
+    for (let i = 1; i < divElements.length; i++) {
+      divElements[i].parentNode.removeChild(divElements[i]);
+    }
+
     messageReceiverName.innerText = friend.name;
-    messageReceiverId.value = friend.user_id;
     messagediv.style.visibility = "visible";
+    messageReceiverId.value = friend.user_id;
+    socket.emit("connected", {
+      messageReceiverId: messageReceiverId.value,
+    });
   });
 
   friendDiv.appendChild(profileImg);
   friendDiv.appendChild(name);
   friendDiv.appendChild(messageBtn);
-  // friendRequestDiv.appendChild(rejectBtn);
-
   return friendDiv;
 }
 
-// Send message functionality
-const messagediv = document.querySelector(".messagediv");
-const messageCloseBtn = document.querySelector(".messageCloseBtn");
-const messageReceiverName = document.querySelector(".messageReceiverName");
-const messageReceiverId = document.querySelector(".messageReceiverId");
+// instanstating socket io
+const socket = io();
 
-messageCloseBtn.addEventListener("click", () => {
-  messagediv.style.visibility = "hidden";
-});
-
-//  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 const messageContainer = document.querySelector(".messageContainer");
 const sendForm = document.querySelector(".sendForm");
 const messageInput = document.querySelector(".messageInput");
 
-const socket = io();
-
-socket.on("chatMessage", (data) => {
+socket.on("messageReceived", (data) => {
   appendMessage("incoming", data);
 });
 
@@ -152,10 +148,11 @@ sendForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const message = messageInput.value;
   appendMessage("outgoing", message);
-  socket.emit("sendMessage", message);
 
-  // recipientID: messageReceiverId.value,
-  // console.log(messageReceiverId.value);
+  socket.emit("sendMessage", {
+    message: message,
+  });
+
   messageInput.value = "";
 });
 
@@ -172,3 +169,13 @@ function appendMessage(type, data) {
     messageContainer.append(incomingMessage);
   }
 }
+
+// Send message functionality
+const messagediv = document.querySelector(".messagediv");
+const messageCloseBtn = document.querySelector(".messageCloseBtn");
+const messageReceiverName = document.querySelector(".messageReceiverName");
+const messageReceiverId = document.querySelector(".messageReceiverId");
+
+messageCloseBtn.addEventListener("click", () => {
+  messagediv.style.visibility = "hidden";
+});

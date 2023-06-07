@@ -41,7 +41,7 @@ router.get("/users", (req, res) => {
 
 router.get("/usersProfileName", (req, res) => {
   const token = req.cookies.token;
-  const query = `SELECT name FROM users WHERE user_id = ?`;
+  const query = `SELECT user_id, name FROM users WHERE user_id = ?`;
   Jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
     if (err) {
       return res.send({ Error: "Token does not matched" });
