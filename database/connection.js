@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: "../.env" });
 
-console.log(process.env.DATABASE_DB_NAME);
-
 const db = await mysql.createConnection({
   host: process.env.DATABASE_HOST,
   database: process.env.DATABASE_DB_NAME,
