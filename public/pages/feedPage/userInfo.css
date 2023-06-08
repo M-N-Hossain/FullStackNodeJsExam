@@ -1,0 +1,50 @@
+.userInfo{
+    visibility: hidden;
+    position: absolute;
+    height: 20rem;
+    background-color: var(--primary600);
+    left: 30%;
+    top: 5rem;
+    display: flex;
+    padding: 1%;
+    width: 40%;
+    height: auto;
+    border: 1px solid  var(--tertitary500);
+    border-radius: 5px;
+}
+
+.userInfo form {
+    position: relative;
+    width: 100%;
+}
+.userInfo form p {
+    background-color: var(--primary700);
+    color: white;
+    text-align: center;
+    width: 25%;
+    position: relative;
+    left: 38%;
+    border-radius: 5px;
+}
+.userInfo input {
+    
+    font-size: 1.5rem;
+    padding: 1%;
+    margin: 1%;
+    border: 1px solid var(--tertitary500);
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    width: 90%;
+    left: 4%;
+}
+
+.userInfo button {
+    font-size: 1.5rem;
+    position: relative;
+    left: 40%;
+    width: 20%;
+    padding: 1%;
+    margin-top: 2%;
+
+}

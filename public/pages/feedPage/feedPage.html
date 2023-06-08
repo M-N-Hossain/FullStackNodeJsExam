@@ -7,8 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="./pages/feedPage/feedPage.css">
     <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./pages/feedPage/userInfo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
     <script src="/socket.io/socket.io.js"></script>
 
 
@@ -20,7 +21,7 @@
         <input type="text" class="searchBar" placeholder="search post by username">
         <button class="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
 
-        <a class="profileLink" href="http://localhost:8080"><img class="profile" src="../../assets/images/logo2.png" alt=""></a>
+        <a class="profileLink" ><img class="profile" src="../../assets/images/logo2.png" alt=""></a>
         <h4 class="profileName">username</h4>
         <button class="logOutBtn">Log Out</button>
     </nav>
@@ -39,7 +40,7 @@
             </div>
             
         </div>
-        
+        <!-- Right Content -->
         <div class="rightContent">
             <div class="friendRequestDiv">
                 <h4>Friend Requests</h4>
@@ -49,6 +50,8 @@
             </div>
             
         </div>
+
+        <!-- Message Box Pop-up -->
         <div class="messagediv">
             <div class="messageContainer">
                 <div class="username">
@@ -62,12 +65,28 @@
                 <button type="submit" class="sendBtn">Send</button>
             </form>
         </div>
+
+        <div class="userInfo">
+            <form action="">
+                <h6 class="profileId" style="visibility: hidden;"></h6>
+                <p>Email</p>
+                <input type="email" class="userInfoEmail" > <br>
+                <p>Username</p> 
+                <input type="text" class="userInfoUsername" > <br>
+                <p>Name</p> 
+                <input type="text" class="userInfoName" > <br>
+                <p>Date</p>
+                <input type="date" class="userInfoDate" > <br>
+                <button class="userInfoBtn">Save</button>
+            </form>
+        </div>
     </div>
 
-    <script src="./pages/feedPage/middleContent.js"></script>
+    <script src="./pages/feedPage/feedPageGlobal.js" ></script>
     <script src="./pages/feedPage/leftContent.js"></script>
-    <script src="./pages/feedPage/rightContent.js"></script>
-    <script src="./pages/feedPage/feedPageGlobal.js"></script>
+    <script src="./pages/feedPage/middleContent.js"></script>
+    <script src="./pages/feedPage/rightContent.js" ></script>
+    <script src="./pages/feedPage/userInfo.js"></script>
     <!-- <script src="./pages/feedPage/message.js"></script> -->
 
 </body>

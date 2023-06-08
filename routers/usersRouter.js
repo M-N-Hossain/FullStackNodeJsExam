@@ -39,6 +39,28 @@ router.get("/users", (req, res) => {
   });
 });
 
+router.get("/users/:user_id", (req, res) => {
+  const token = req.cookies.token;
+  const query = `SELECT * FROM users WHERE user_id = ?`;
+
+  Jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
+    if (err) {
+      return res.send({ Error: "Token does not matched" });
+    } else {
+      dbConnection.query(query, req.params.user_id, (err, result) => {
+        if (err) {
+          return res.status(500).send({
+            Error:
+              "Can't find the user with this user_id " + req.params.user_id,
+          });
+        } else {
+          res.send({ data: result });
+        }
+      });
+    }
+  });
+});
+
 router.get("/usersProfileName", (req, res) => {
   const token = req.cookies.token;
   const query = `SELECT user_id, name FROM users WHERE user_id = ?`;
@@ -48,9 +70,33 @@ router.get("/usersProfileName", (req, res) => {
     } else {
       dbConnection.query(query, decode.user_id, (err, result) => {
         if (err) {
-          return res.status(500).send({ Error: err });
+          return res.send({ Error: err });
         } else {
           res.send({ data: result });
+        }
+      });
+    }
+  });
+});
+
+router.put("/users/:user_id", (req, res) => {
+  const token = req.cookies.token;
+  const query = `UPDATE users SET email = ?, username = ?, name = ? WHERE user_id = ?`;
+  Jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
+    if (err) {
+      return res.send({ Error: "Token does not matched" });
+    } else {
+      const values = [
+        req.body.email,
+        req.body.username,
+        req.body.name,
+        decode.user_id,
+      ];
+      dbConnection.query(query, values, (err, result) => {
+        if (err) {
+          return res.send({ Error: err });
+        } else {
+          res.send({ data: "Updated" });
         }
       });
     }

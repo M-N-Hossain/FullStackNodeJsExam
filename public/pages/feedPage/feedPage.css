@@ -61,7 +61,7 @@ nav .profileLink{
     right: -10%;
     height: 3rem;
     top: 1rem;
-    
+    cursor: pointer;
 }
 nav .profileLink .profile{
     width: 65%;
@@ -531,3 +531,5 @@ nav .logOutBtn:hover{
     border-radius: 5px;
     cursor: pointer;
 }
+
+
