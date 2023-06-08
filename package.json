@@ -4,7 +4,9 @@
   "description": "Its a exam project. We are going make socail media platform. Where a user can send friend request to other users and share posts with others.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon.cmd ./app.js",
+    "prod": "node ./app.js"
   },
   "repository": {
     "type": "git",
