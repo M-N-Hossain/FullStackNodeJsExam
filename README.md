@@ -20,7 +20,7 @@ To run FriendBook locally, follow these steps:
 
 1. Clone the repository:
 2. Navigate to the project directory:
-3. Install the dependencies: (npm i)
+3. Install the dependencies: (npm install)
 4. Set up environment variables:
    - Create a `.env` file in the root directory of the project.
    - Define the following environment variables in the `.env` file:
