@@ -3,6 +3,17 @@
 
 FriendBook is a web application built with Node.js, Express, HTML, and CSS. It provides users with a platform to connect with friends, share posts, send friend requests, and engage in real-time chat conversations. The application utilizes JWT for user authorization and Socket.io for real-time messaging.
 
+
+## Technologies Used
+
+The documentation website is built using the following technologies:
+
+- Node.js: A JavaScript runtime environment that allows running JavaScript code on the server-side.
+- Express: A web application framework for Node.js that simplifies the development of server-side applications and APIs.
+- Socket.io: node.js realtime framework.
+- HTML: The standard markup language for creating web pages and structuring content.
+- CSS: The style sheet language used for describing the visual presentation of a document.
+
 ## Features
 
 - User Sign Up: New users can create an account on FriendBook by providing their required information.
